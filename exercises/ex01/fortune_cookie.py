@@ -24,7 +24,7 @@ else:
         print("Your hard work will pay off soon!")
     else:
         if fortune == 3:
-            print("A pleasant surprise is in store for you this week.")
+            print("A pleasant surprise is in store for you this week!")
         else:
             if fortune == 4:
                 print("Tomorrow will be a great day to try something new!")
