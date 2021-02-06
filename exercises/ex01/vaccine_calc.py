@@ -28,6 +28,8 @@ time_required: float = (2 * population * (target / 100) - doses_admin) / doses_p
 today: datetime = datetime.today()
 days_until_target: timedelta = timedelta(round(time_required))
 day_of_target: datetime = today + days_until_target
+
+days: str = str(days_until_target)
 target_date: str = day_of_target.strftime("%B %d, %Y")
 
-print("We will reach " + str(target) + "% vaccination in " + str(round(time_required)) + " days, which falls on " + target_date + ".")
+print("We will reach " + str(target) + "% vaccination in " + days + " days, which falls on " + target_date + ".")
