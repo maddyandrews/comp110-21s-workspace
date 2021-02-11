@@ -12,6 +12,7 @@ def main() -> None:
 
 # TODO 1: Define the tar_heels function, and its logic, here.
 def tar_heels(x: int) -> str:
+    """Tar Heel arithmetic."""
     if x // 2 == x / 2 and x // 7 == x / 7:
         return ("TAR HEELS")
     else:
@@ -22,6 +23,7 @@ def tar_heels(x: int) -> str:
                 return ("HEELS")
             else:
                 return ("CAROLINA")
+
 
 if __name__ == "__main__":
     main()
