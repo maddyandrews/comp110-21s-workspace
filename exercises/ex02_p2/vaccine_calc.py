@@ -21,14 +21,14 @@ def main() -> None:
 
 # TODO 1: Define days_to_target function
 def days_to_target(w: int, x: int, y: int, z: int) -> int:
-    """Calculates days until target % vaccination reached."""
+    """Calculates # of days until target % vaccination reached."""
     time_required: float = (2 * w * (z / 100) - x) / y
     return int(round(time_required))
 
 
 # TODO 3: Define future_date function
 def future_date(x: int) -> str:
-    """Calculates date of target %."""
+    """Calculates date target % is reached."""
     today: datetime = datetime.today()
     days_to_go: timedelta = timedelta(round(x))
     day_of_target: datetime = today + days_to_go
