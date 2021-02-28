@@ -28,7 +28,10 @@ COW: str = "\U0001F404"
 def main() -> None:
     """The entrypoint of the program, when run as a module."""
     greet()
-    
+
+    global cow
+    cow = str(input("Aw, it looks like this one likes you! What will you call them?: "))
+
     print(f"\nNow you and {cow} can spend the day together!")
     
     global points
@@ -38,9 +41,9 @@ def main() -> None:
     while play == "Continue.":
         print(f"\n{cow} has a few ideas for how you can spend the day together:"
                 "\n1. Spend time outdoors."
-            "\n2. Take a trip to the city."
-            "\n3. Relax at home."
-            "\n4. I'm done playing for now.")
+                    "\n2. Take a trip to the city."
+                    "\n3. Relax at home."
+                    "\n4. I'm done playing for now.")
         
         choice: int = int(input(f"So, what would you like to do today with {cow}?: "))
         if choice == 1:
@@ -56,7 +59,7 @@ def main() -> None:
                     play = "Stop."
 
     print(f"\nThanks for playing today, {player}. {cow} will miss you :( Until next time!"
-        f"\nAdventure points earned: {points} {COW_FACE}")
+            f"\nAdventure points earned: {points} {COW_FACE}")
     quit()
     return None
 
@@ -69,13 +72,10 @@ def greet() -> None:
     player = str(input(f"Welcome to Sunshine Meadows {SUN}, where all the happiest cows come to graze. "
             "Before you go off exploring, what is your name?: "))
 
-    welcome_message: str = str(f"\nNice to meet you, {player}! Now, let's see if we can find a friend to play with today.\n"
-            f"*A baby cow comes up to you and says, \"moo\" {COW_FACE}.*")
+    welcome: str = str(f"\nNice to meet you, {player}! Now, let's see if we can find a friend to play with today.\n"
+                            f"*A baby cow comes up to you and says, \"moo\" {COW_FACE}.*")
 
-    print(welcome_message)
-
-    global cow
-    cow = str(input("Aw, it looks like this one likes you! What will you call them?: "))
+    print(welcome)
     return None
 
 
@@ -89,10 +89,10 @@ def outdoor_1() -> None:
     BEE: str = "\U0001F41D"
 
     search: int = int(input(f"\nWhere should {cow} look?:"
-                                "\n1. Under a rock."
-                            "\n2. Near the trees."
-                            "\n3. By the flowers."
-                            "\nSearch: "))
+                            "\n1. Under a rock."
+                                "\n2. Near the trees."
+                                "\n3. By the flowers."
+                                "\nSearch: "))
 
     global points
     if search == 1:
@@ -147,9 +147,9 @@ def outdoor_3() -> None:
     global points
     location: int = int(input(f"\nWhere should you and {cow} go?:"
                                 "\n1. The beach."
-                            "\n2. The forest."
-                            "\n3. The mountains."
-                            "\nLocation: "))
+                                    "\n2. The forest."
+                                    "\n3. The mountains."
+                                    "\nLocation: "))
 
     if location == 1:
         print(f"You and {cow} have a great time collecting shells on the beach!\n{COW_FACE}{SHELL}")
@@ -244,9 +244,9 @@ def paris_1(x: int) -> int:
     
     dessert: int = int(input(f"\nFirst, let's head to the bakery! What should you and {cow} order?:"
                                 "\n1. Cake."
-                            "\n2. A croissant"
-                            "\n3. A baguette"
-                            "\nYour order: "))
+                                    "\n2. A croissant"
+                                    "\n3. A baguette"
+                                    "\nYour order: "))
     
     if dessert == 1:
         print(f"\nGreat choice, {player}! Cake is {cow}'s favorite!\n{COW_FACE}{CAKE}")
@@ -273,9 +273,9 @@ def paris_2(x: int) -> int:
 
     shopping: int = int(input("\nWhat should you buy for Cowy?"
                                 "\n1. Shoes!"
-                            "\n2. A nice new bag."
-                            "\n3. A fancy hat."
-                            "\nItem: "))
+                                    "\n2. A nice new bag."
+                                    "\n3. A fancy hat."
+                                    "\nItem: "))
 
     SHOE: str = "\U0001F460"
     BAG: str = "\U0001F45B"
@@ -299,9 +299,9 @@ def paris_3(x: int) -> int:
     """Final activity in Paris. Adds points based on selection."""
     landmark: int = int(input(f"\nBefore you and {cow} fly home, you have time to go to one last destination:"
                                 "\n1. The Louvre."
-                            "\n2. The Arc de Triomphe."
-                            "\n3. The Eiffel Tower"
-                            "\nWhich landmark should you visit?: "))
+                                    "\n2. The Arc de Triomphe."
+                                    "\n3. The Eiffel Tower"
+                                    "\nWhich landmark should you visit?: "))
 
     if landmark == 1:
         print(f"\nSo many beautiful pieces of artwork! {cow} feels inspired to become an artist one day.")
@@ -328,11 +328,11 @@ def nyc_1(x: int) -> int:
     print(f"\nWelcome to NYC, {player} and {cow}, or as some like to call it, the Big Apple {APPLE}")
 
     souvenir: int = int(input(f"\nYour first stop is the Statue of Liberty!{STATUE_OF_LIBERTY} "
-            "What kind of souvenir should Cowy buy?:"
-                "\n1. A mug."
-                "\n2. A t-shirt."
-                "\n3. A keychain."
-                "\nSouvenir: "))
+                                "What kind of souvenir should Cowy buy?:"
+                                    "\n1. A mug."
+                                    "\n2. A t-shirt."
+                                    "\n3. A keychain."
+                                    "\nSouvenir: "))
 
     msg: str = str(f"I {HEART} NYC")
 
@@ -362,10 +362,10 @@ def nyc_2(x: int) -> int:
     SALAD: str = "\U0001F957"
 
     order: int = int(input(f"What should you and {cow} order?:"
-        "\n1. Burgers."
-            "\n2. Hot dogs."
-            "\n3. Pizza."
-                "\nOrder: "))
+                        "\n1. Burgers."
+                            "\n2. Hot dogs."
+                            "\n3. Pizza."
+                            "\nOrder: "))
 
     if order == 1:
         print(f"\n{cow} looks offended, and orders a salad instead...\n{SALAD}{BURGER}")
@@ -380,10 +380,10 @@ def nyc_2(x: int) -> int:
                 x += 10
 
     side: int = int(input("\nDid you want to order a side?:"
-        "\n1. Fries!"
-            "\n2. A pretzel!"
-                "\n3. I'm okay, thanks."
-                    "\nSide: "))
+                        "\n1. Fries!"
+                            "\n2. A pretzel!"
+                            "\n3. I'm okay, thanks."
+                            "\nSide: "))
 
     if side == 1:
         print(f"{cow} does love fries! {FRIES}")
@@ -398,7 +398,7 @@ def nyc_2(x: int) -> int:
 def nyc_3(x: int) -> int:
     """Final activity in NYC. Baseball game where score is randomized. Give points based on outcome guess."""
     print(f"\nLastly, you and {cow} decide to go to a baseball game! "
-        "Today, the Yankees are playing the Red Sox.")
+            "Today, the Yankees are playing the Red Sox.")
 
     BASEBALL: str = "\U000026BE"
 
@@ -407,9 +407,9 @@ def nyc_3(x: int) -> int:
     yankees: int = randint(0, 9)
 
     guess: int = int(input(f"\nWho do you think will win, {player}?"
-        "\n1. Red Sox."
-            "\n2. Yankees."
-                "\nMy guess: "))
+                            "\n1. Red Sox."
+                                "\n2. Yankees."
+                                "\nMy guess: "))
     
     if redsox > yankees:
         print(f"\nWhat a game! The final score was {redsox} - {yankees}, and the Red Sox won.")
@@ -445,9 +445,9 @@ def moon_1(x: int) -> int:
     print(f"\nYou and {cow} blast off to the moon! {ROCKET}\nFirst, you decide to eat some astronaut ice cream.")
 
     flavor: int = int(input(f"What flavor would you like, {player}?"
-        "\n1. Chocolate."
-            "\n2. Vanilla."
-                "\nFlavor: "))
+                            "\n1. Chocolate."
+                                "\n2. Vanilla."
+                                "\nFlavor: "))
 
     if flavor == 1:
         x += 10
@@ -481,10 +481,10 @@ def moon_2(x: int) -> int:
     TELESCOPE: str = "\U0001F52D"
 
     stargaze: int = int(input(f"\nWhat should {cow} look for in their telescope?:"
-        "\n1. A star."
-            "\n2. A planet."
-                "\n3. A galaxy."
-                    "\nLook for: "))
+                                "\n1. A star."
+                                    "\n2. A planet."
+                                    "\n3. A galaxy."
+                                    "\nLook for: "))
 
     if stargaze == 1:
         print(f"\n{cow} finds a shooting star!\n{STAR}{TELESCOPE}{COW}")
@@ -568,10 +568,10 @@ def home_2() -> None:
     print(f"\nNext, {cow} decides to try a new hobby!")
 
     hobby: int = int(input(f"\nWhat hobby should {cow} try?: "
-                                "\n1. Baking."
-                            "\n2. Gardening."
-                            "\n3. Painting."
-                            "\nHobby: "))
+                            "\n1. Baking."
+                                "\n2. Gardening."
+                                "\n3. Painting."
+                                "\nHobby: "))
 
     COOKIE: str = "\U0001F36A"
     PIE: str = "\U0001F967"
@@ -585,10 +585,10 @@ def home_2() -> None:
     if hobby == 1:
         points += 10
         bake: int = int(input(f"\nWhat would you like to bake, {player}?: "
-                                "\n1. Cookies"
-                            "\n2. Pie."
-                            "\n3. Cupcakes."
-                            "\nBake: "))
+                            "\n1. Cookies"
+                                "\n2. Pie."
+                                "\n3. Cupcakes."
+                                "\nBake: "))
 
         if bake == 1:
             print(f"\nYou and {cow} make some delicious chocolate chip cookies!"
@@ -608,7 +608,7 @@ def home_2() -> None:
     if hobby == 2:
         points += 10
         flower: int = int(input(f"\nWhat kind of flowers should {cow} plant?:"
-                                    "\n1. Sunflowers."
+                                "\n1. Sunflowers."
                                     "\n2. Tulips."
                                     "\n3. Roses."
                                     "\nFlower: "))
@@ -651,7 +651,7 @@ def goodnight() -> None:
 
     print(f"{cow} had such a fun day, and hopes to see you again soon, {player}!\n"
             f"\n*Goodnight {cow}, and sweet dreams!*\n{COW_FACE}{SLEEP}{MOON}"
-        f"\nAdventure points: {points}")
+                f"\nAdventure points: {points}")
 
     play: str = input("\nContinue? (yes/no): ")
     if play == "yes":
