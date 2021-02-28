@@ -1,4 +1,4 @@
-"""CYOA: Cow Adventures
+"""CYOA: Cow Adventures!
 
 Requirement #4 is included with the outdoor and home adventure branches. 
 Both add points by changing the global points variable directly.
@@ -10,14 +10,15 @@ Requirement #9: Game Loop
 Upon reaching the end of any of the 3 main adventure paths, the 'goodnight' function is called, which ends the day
 and allows for the player to continue to another day of adventures. The player can end their experience here, or they
 can stop playing by selecting option 4 in the main function. The 'play' while loop inside the main function allows 
-the player to choose the same branch as before, or an entirely new one."""
+the player to choose the same branch as before, or an entirely new one.
+
+"""
 
 __author__ = "730393750"
 
 COW_FACE: str = "\U0001F42E"
 COW: str = "\U0001F404"
 
-from random import randint
 
 def main() -> None:
     """The entrypoint of the program, when run as a module."""
@@ -26,15 +27,15 @@ def main() -> None:
     print(f"\nNow you and {name} can spend the day together!")
     
     global points
-    points = 0
+    points: int = 0
 
     play: str = "Continue."
     while play == "Continue.":
         print(f"\n{name} has a few ideas for how you can spend the day together:"
-        "\n1. Spend time outdoors."
-        "\n2. Take a trip to the city."
-        "\n3. Relax at home."
-        "\n4. I'm done playing for now.")
+            "\n1. Spend time outdoors."
+            "\n2. Take a trip to the city."
+            "\n3. Relax at home."
+            "\n4. I'm done playing for now.")
         
         choice: int = int(input(f"So, what would you like to do today with {name}?: "))
         if choice == 1:
@@ -50,7 +51,7 @@ def main() -> None:
                     play = "Stop."
 
     print(f"\nThanks for playing today, {player}. {name} will miss you :( Until next time!"
-    f"\nAdventure points earned: {points} {COW_FACE}")
+        f"\nAdventure points earned: {points} {COW_FACE}")
     quit()
     return None
 
@@ -60,31 +61,33 @@ def greet() -> None:
     SUN: str = "\U0001F324"
 
     global player
-    player = str(input(f"Welcome to Sunshine Meadows {SUN}, where all the happiest cows come to graze. "
-    "Before you go off exploring, what is your name?: "))
+    player: str = str(input(f"Welcome to Sunshine Meadows {SUN}, where all the happiest cows come to graze. "
+        "Before you go off exploring, what is your name?: "))
 
-    print(f"\nNice to meet you, {player}! Now, let's see if we can find a friend to play with today.\n"
-    f"*A baby cow comes up to you and says, \"moo\" {COW_FACE}.*")
+    welcome: str = str(f"\nNice to meet you, {player}! Now, let's see if we can find a friend to play with today.\n"
+        f"*A baby cow comes up to you and says, \"moo\" {COW_FACE}.*")
+
+    print(welcome)
 
     global name
-    name = str(input("Aw, it looks like this one likes you! What will you call them?: "))
+    name: str = str(input("Aw, it looks like this one likes you! What will you call them?: "))
     return None
 
 
 def outdoor_1() -> None:
     """First outdoor activity. Adds to points directly based on choice made."""
     print(f"\nWow, a day outdoors - what an adventure it'll be!\n"
-    f"\nFirst, you and {name} decide to catch some bugs!")
+        f"\nFirst, you and {name} decide to catch some bugs!")
 
     LADYBUG: str = "\U0001F41E"
     BUTTERFLY: str = "\U0001F98B"
     BEE: str = "\U0001F41D"
 
     search: int = int(input(f"\nWhere should {name} look?:"
-    "\n1. Under a rock."
-    "\n2. Near the trees."
-    "\n3. By the flowers."
-    "\nSearch: "))
+        "\n1. Under a rock."
+        "\n2. Near the trees."
+        "\n3. By the flowers."
+        "\nSearch: "))
 
     global points
     if search == 1:
@@ -105,10 +108,10 @@ def outdoor_2() -> None:
     print(f"\nNext, you and {name} head to the pond. You decide to go fishing!")
     
     bait: int = int(input("\nWhat kind of bait do you use?:"
-        "\n1. Worms from a puddle of mud nearby."
-        "\n2. A pb&j sandwich you have leftover from lunch."
-        "\n3. I don't need bait!"
-        "\nBait: "))
+            "\n1. Worms from a puddle of mud nearby."
+            "\n2. A pb&j sandwich you have leftover from lunch."
+            "\n3. I don't need bait!"
+            "\nBait: "))
     
     global points
     points += fishing(bait)
@@ -138,10 +141,10 @@ def outdoor_3() -> None:
 
     global points
     location: int = int(input(f"\nWhere should you and {name} go?:"
-    "\n1. The beach."
-    "\n2. The forest."
-    "\n3. The mountains."
-    "\nLocation: "))
+        "\n1. The beach."
+        "\n2. The forest."
+        "\n3. The mountains."
+        "\nLocation: "))
 
     if location == 1:
         print(f"You and {name} have a great time collecting shells on the beach!\n{COW_FACE}{SHELL}")
@@ -157,8 +160,8 @@ def outdoor_3() -> None:
 
 
 def fishing(x: int) -> int:
-    """Fishing at the pond; rolls a random integer to assign new points earned on adventure. 
-    Each argument has a different chance of catching fish, which are worth 1, 3, or 5 points."""
+    """Fishing at the pond; rolls a random integer to assign new points earned on adventure."""
+    from random import randint
     y: int = randint(1, 5)
 
     BOAT: str = "\U000026F5"
@@ -180,22 +183,21 @@ def fishing(x: int) -> int:
             else:
                 print(f"You caught... a boot. Better luck next time, {player}.")
                 return 1
-
-    if x == 2:
-        x += 5
-        if y > 2:
-            print(f"Wow, {player}! You caught a big fish!! {WHALE}")
-            return 5
+    else:
+        if x == 2:
+            x += 5
+            if y > 2:
+                print(f"Wow, {player}! You caught a big fish!! {WHALE}")
+                return 5
+            else:
+                print(f"You caught... a boot. Better luck next time, {player}.")
+                return 1
         else:
-            print(f"You caught... a boot. Better luck next time, {player}.")
-            return 1
-
-    if x == 3:
-        x += 1
-        print(f"You caught... a boot. Better luck next time, {player}.")
-        return 1
+            if x == 3:
+                x += 1
+                print(f"You caught... a boot. Better luck next time, {player}.")
+                return 1
     return int()
-
 
 def city_1(x: int) -> int:
     """First city adventure path. Directs player to selected city and returns additional adventure points."""
@@ -258,6 +260,7 @@ def paris_2(x: int) -> int:
     """Second activity in Paris. Random amount rolled to spend while shopping. Adds item's points * # items bought."""
     print(f"\nNext, you and {name} decide to go shopping.")
 
+    from random import randint
     budget: int = randint(10, 50)
     quantity: int = round(budget/10)
     print(f"Looks like you have ${budget} to spend. You have enough to buy {quantity} of any item here!")
@@ -289,10 +292,10 @@ def paris_2(x: int) -> int:
 def paris_3(x: int) -> int:
     """Final activity in Paris. Adds points based on selection."""
     landmark: int = int(input(f"\nBefore you and {name} fly home, you have time to go to one last destination:"
-    "\n1. The Louvre."
-    "\n2. The Arc de Triomphe."
-    "\n3. The Eiffel Tower"
-    "\nWhich landmark should you visit?: "))
+        "\n1. The Louvre."
+        "\n2. The Arc de Triomphe."
+        "\n3. The Eiffel Tower"
+        "\nWhich landmark should you visit?: "))
 
     if landmark == 1:
         print(f"\nSo many beuatiful pieces of artwork! {name} feels inspired to become an artist one day.")
@@ -318,11 +321,11 @@ def nyc_1(x: int) -> int:
     print(f"\nWelcome to NYC, {player} and {name}, or as some like to call it, the Big Apple {APPLE}")
 
     souvenir: int = int(input(f"\nYour first stop is the Statue of Liberty!{STATUE_OF_LIBERTY} "
-    "What kind of souvenir should Cowy buy?:"
-    "\n1. A mug."
-    "\n2. A t-shirt."
-    "\n3. A keychain."
-    "\nSouvenir: "))
+        "What kind of souvenir should Cowy buy?:"
+        "\n1. A mug."
+        "\n2. A t-shirt."
+        "\n3. A keychain."
+        "\nSouvenir: "))
 
     message: str = str(f"I {HEART} NYC")
 
@@ -352,10 +355,10 @@ def nyc_2(x: int) -> int:
     SALAD: str = "\U0001F957"
 
     order: int = int(input(f"What should you and {name} order?:"
-    "\n1. Burgers."
-    "\n2. Hot dogs."
-    "\n3. Pizza."
-    "\nOrder: "))
+        "\n1. Burgers."
+        "\n2. Hot dogs."
+        "\n3. Pizza."
+        "\nOrder: "))
 
     if order == 1:
         print(f"\n{name} looks offended, and orders a salad instead...\n{SALAD}{BURGER}")
@@ -370,10 +373,10 @@ def nyc_2(x: int) -> int:
                 x += 10
 
     side: int = int(input("\nDid you want to order a side?:"
-    "\n1. Fries!"
-    "\n2. A pretzel!"
-    "\n3. I'm okay, thanks."
-    "\nSide: "))
+        "\n1. Fries!"
+        "\n2. A pretzel!"
+        "\n3. I'm okay, thanks."
+        "\nSide: "))
 
     if side == 1:
         print(f"{name} does love fries! {FRIES}")
@@ -388,28 +391,29 @@ def nyc_2(x: int) -> int:
 def nyc_3(x: int) -> int:
     """Final activity in NYC. Baseball game where score is randomized. Give points based on outcome guess."""
     print(f"\nLastly, you and {name} decide to go to a baseball game! "
-    "Today, the Yankees are playing the Red Sox.")
+        "Today, the Yankees are playing the Red Sox.")
 
     BASEBALL: str = "\U000026BE"
 
+    from random import randint
     redsox: int = randint(0,9)
     yankees: int = randint(0,9)
 
     guess: int = int(input(f"\nWho do you think will win, {player}?"
-    "\n1. Red Sox."
-    "\n2. Yankees."
-    "\nMy guess: "))
+        "\n1. Red Sox."
+        "\n2. Yankees."
+        "\nMy guess: "))
     
     if redsox > yankees:
         print(f"\nWhat a game! The final score was {redsox} - {yankees}, and the Red Sox won.")
-        winner: int = 1
+        winner = 1
     else:
         if redsox < yankees:
             print(f"\nWhat a game! The final score was {yankees} - {redsox}, and the Yankees won.")
-            winner: int = 2
+            winner = 2
         else:
             print(f"\nThe score was {yankees} - {redsox} -- a tie!")
-            winner:  int = 0
+            winner = 0
     
     if guess == winner:
         print(f"\nLooks like your prediction was right, {player}! And {name} caught a home run. "
@@ -427,17 +431,16 @@ def nyc_3(x: int) -> int:
 
 
 def moon_1(x: int) -> int:
-    """First activity on the moon. Adds points based on flavor choice; gives random amount of points based off integer rolled."""
-    
+    """First activity on the moon. Adds points based on flavor choice; gives random additional points."""
     ROCKET: str = "\U0001F680"
     ICE_CREAM: str = "\U0001f368"
 
     print(f"\nYou and {name} blast off to the moon! {ROCKET}\nFirst, you decide to eat some astronaut ice cream.")
 
     flavor: int = int(input(f"What flavor would you like, {player}?"
-    "\n1. Chocolate."
-    "\n2. Vanilla."
-    "\nFlavor: "))
+        "\n1. Chocolate."
+        "\n2. Vanilla."
+        "\nFlavor: "))
 
     if flavor == 1:
         x += 10
@@ -445,6 +448,7 @@ def moon_1(x: int) -> int:
         if flavor == 2:
             x += 5
 
+    from random import randint
     scoops: int = randint(1, 3)
     if scoops == 1:
         print(f"You and {name} each get 1 scoop of ice cream {ICE_CREAM} Yum!")
@@ -470,10 +474,10 @@ def moon_2(x: int) -> int:
     TELESCOPE: str = "\U0001F52D"
 
     stargaze: int = int(input(f"\nWhat should {name} look for in their telescope?:"
-    "\n1. A star."
-    "\n2. A planet."
-    "\n3. A galaxy."
-    "\nLook for: "))
+        "\n1. A star."
+        "\n2. A planet."
+        "\n3. A galaxy."
+        "\nLook for: "))
 
     if stargaze == 1:
         print(f"\n{name} finds a shooting star!\n{STAR}{TELESCOPE}{COW}")
@@ -498,7 +502,6 @@ def moon_3(x: int) -> int:
     SPACESHIP: str = "\U0001F6F8"
 
     greetings: str = str(input("Do you say hello? (yes/no): "))
-
     if greetings == "yes":
         print(f"\n{name} and the alien become friends! He offers you both a ride home in his spaceship."
         f"\n{ALIEN}{PEACE}{SPACESHIP}")
@@ -557,10 +560,10 @@ def home_2() -> None:
     print(f"\nNext, {name} decides to try a new hobby!")
 
     hobby: int = int(input(f"\nWhat hobby should {name} try?: "
-    "\n1. Baking."
-    "\n2. Gardening."
-    "\n3. Painting."
-    "\nHobby: "))
+        "\n1. Baking."
+        "\n2. Gardening."
+        "\n3. Painting."
+        "\nHobby: "))
 
     COOKIE: str = "\U0001F36A"
     PIE: str = "\U0001F967"
@@ -574,10 +577,10 @@ def home_2() -> None:
     if hobby == 1:
         points += 10
         bake: int = int(input(f"\nWhat would you like to bake, {player}?: "
-        "\n1. Cookies"
-        "\n2. Pie."
-        "\n3. Cupcakes."
-        "\nBake: "))
+            "\n1. Cookies"
+            "\n2. Pie."
+            "\n3. Cupcakes."
+            "\nBake: "))
 
         if bake == 1:
             print(f"\nYou and {name} make some delicious chocolate chip cookies!\n{COW_FACE}{COOKIE}")
@@ -594,10 +597,10 @@ def home_2() -> None:
     if hobby == 2:
         points += 10
         flower: int = int(input(f"\nWhat kind of flowers should {name} plant?:"
-        "\n1. Sunflowers."
-        "\n2. Tulips."
-        "\n3. Roses."
-        "\nFlower: "))
+            "\n1. Sunflowers."
+            "\n2. Tulips."
+            "\n3. Roses."
+            "\nFlower: "))
 
         if flower == 1:
             print(f"\n{name}'s garden looks so cheeful with the bright yellow sunflowers {SUNFLOWER}")
@@ -635,15 +638,15 @@ def goodnight() -> None:
     MOON: str = "\U0001F319"
 
     print(f"{name} had such a fun day, and hopes to see you again soon, {player}!\n"
-    f"\n*Goodnight {name}, and sweet dreams!*\n{COW_FACE}{SLEEP}{MOON}"
-    f"\nAdventure points: {points}")
+        f"\n*Goodnight {name}, and sweet dreams!*\n{COW_FACE}{SLEEP}{MOON}"
+        f"\nAdventure points: {points}")
 
     play: str = input(f"\nContinue? (yes/no): ")
     if play == "yes":
         print(f"Good morning, {player}. Another fun day is in store for you and {name}!")
     else:
         print(f"\nThanks for playing today, {player}. {name} will miss you :( Until next time!"
-        f"\nAdventure points earned: {points} {COW_FACE}")
+            f"\nAdventure points earned: {points} {COW_FACE}")
         quit()
     return None
 
