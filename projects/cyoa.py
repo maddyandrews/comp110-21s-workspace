@@ -493,15 +493,30 @@ def home_1() -> None:
     LETTER: str = "\U0001F48C"
 
     laundry: str = str("1. Laundry.")
-    dishes: str = str(" 2. Dishes.")
+    dishes: str = str("2. Dishes.")
     mail: str = str("3. Get the mail.")
-
-    to_do: list[str] = [laundry, dishes, mail, "4. None."]
+    nothing: str = str("4. None.")
+    
+    to_do: list[str] = [laundry, dishes, mail, nothing]
+    chores: int = 0
 
     global points
     while len(to_do) > 1:
-        chores: int = int(input(f"\n{cow} still has a few things on their to-do list:\n{to_do}"
-                                "\nWhich one would you like to do?: "))
+        if len(to_do) == 4:
+            chores = int(input(f"\n{cow} has a few things on their to-do list:"
+                               f"\n{to_do[0]}\n{to_do[1]}\n{to_do[2]}\n{to_do[3]}"
+                               "\nWhich one would you like to do?: "))
+        else:   
+            if len(to_do) == 3:
+                chores = int(input(f"\n{cow} still has a few things on their to-do list:"
+                                   f"\n{to_do[0]}\n{to_do[1]}\n{to_do[2]}"
+                                   "\nWhich one would you like to do next?: "))
+            else:
+                if len(to_do) == 2:
+                    chores = int(input(f"\n{cow} still has a few things on their to-do list:"
+                                       f"\n{to_do[0]}\n{to_do[1]}"
+                                       "\nWhich one would you like to do next?: "))
+        
         if chores == 1:
             print(f"\n{cow} goes to do their laundry, only cows don't have clothes... {BASKET} Chore #1 done!")
             points += 10
