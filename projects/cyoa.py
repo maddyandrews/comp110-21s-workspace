@@ -16,6 +16,11 @@ the player to choose the same branch as before, or an entirely new one.
 
 __author__ = "730393750"
 
+
+points: int = 0
+player: str = " "
+name: str = " "
+
 COW_FACE: str = "\U0001F42E"
 COW: str = "\U0001F404"
 
@@ -27,7 +32,7 @@ def main() -> None:
     print(f"\nNow you and {name} can spend the day together!")
     
     global points
-    points: int = 0
+    points = 0
 
     play: str = "Continue."
     while play == "Continue.":
@@ -61,7 +66,7 @@ def greet() -> None:
     SUN: str = "\U0001F324"
 
     global player
-    player: str = str(input(f"Welcome to Sunshine Meadows {SUN}, where all the happiest cows come to graze. "
+    player = str(input(f"Welcome to Sunshine Meadows {SUN}, where all the happiest cows come to graze. "
         "Before you go off exploring, what is your name?: "))
 
     welcome: str = str(f"\nNice to meet you, {player}! Now, let's see if we can find a friend to play with today.\n"
@@ -70,7 +75,7 @@ def greet() -> None:
     print(welcome)
 
     global name
-    name: str = str(input("Aw, it looks like this one likes you! What will you call them?: "))
+    name = str(input("Aw, it looks like this one likes you! What will you call them?: "))
     return None
 
 
