@@ -292,7 +292,7 @@ def paris_3(x: int) -> int:
             x += 5
         else:
             if landmark == 3:
-                print(f"\nThe view from the Eiffel Tower is incredible!"
+                print(f"\nThe view from the Eiffel Tower is incredible! "
                       f"You're so high up, {cow} mistakes the people below for ants.")
                 x += 5
 
@@ -628,7 +628,7 @@ def goodnight() -> None:
         print(f"Good morning, {player}. Another fun day is in store for you and {cow}!")
     else:
         print(f"\nThanks for playing today, {player}. {cow} will miss you :( Until next time!"
-              "\nAdventure points earned: {points} {COW_FACE}")
+              f"\nAdventure points earned: {points} {COW_FACE}")
         quit()
     return None
 
